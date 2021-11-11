@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button} from "react-bootstrap";
+import "./Login.css";
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ export default class Login extends React.Component {
     }
     render() {
         return (
-            <Container id="login-container" style={{ marginTop: 150 }}>
+            <Container id="login-container">
                 <Row>
                     <Col>
                         <Row>
@@ -30,9 +31,7 @@ export default class Login extends React.Component {
                             >
                                 <Form>
                                     <Form.Group>
-                                        <Form.Label style={{ float: "left" }}>
-                                            Usuario
-                                        </Form.Label>
+                                        <Form.Label>Usuario</Form.Label>
                                         <Form.Control
                                             onChange={(e) =>
                                                 this.setState({
@@ -42,9 +41,7 @@ export default class Login extends React.Component {
                                         />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.Label style={{ float: "left" }}>
-                                            Contraseña
-                                        </Form.Label>
+                                        <Form.Label>Contraseña</Form.Label>
                                         <Form.Control
                                             type="password"
                                             onChange={(e) =>
@@ -56,10 +53,6 @@ export default class Login extends React.Component {
                                     </Form.Group>
                                     <Button
                                         variant="primary"
-                                        style={{
-                                            marginTop: 20,
-                                            width: "100%",
-                                        }}
                                         onClick={() => {
                                             this.iniciarSesion();
                                         }}
@@ -70,6 +63,15 @@ export default class Login extends React.Component {
                             </Col>
                         </Row>
                     </Col>
+                    {/* <Col>
+                        <Image
+                            src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
+                            roundedCircle
+                            height="auto"
+                            alt=""
+                            loading="lazy"
+                        />
+                    </Col> */}
                 </Row>
             </Container>
         );

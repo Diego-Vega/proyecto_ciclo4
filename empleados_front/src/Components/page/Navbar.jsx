@@ -18,13 +18,13 @@ export default class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            usuario: "Diego",
+            usuario: "Usuario",
             contador: "0",
         };
     }
     render() {
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar fixed="top" id="navbar" collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">
                         <Image
@@ -32,6 +32,7 @@ export default class Menu extends React.Component {
                             roundedCircle
                             height="48"
                             alt=""
+                            id="imagen"
                             loading="lazy"
                         />
                         My Shop Easy
@@ -55,7 +56,7 @@ export default class Menu extends React.Component {
                             </InputGroup>
                             <Nav className="me-auto">
                                 <Nav.Link href="#home" id="iconos">
-                                    <span class="badge rounded-pill badge-notification bg-danger">
+                                    <span className="badge rounded-pill badge-notification bg-danger">
                                         {this.state.contador}
                                     </span>
                                     <FontAwesomeIcon icon={faShoppingCart} />
@@ -74,7 +75,7 @@ export default class Menu extends React.Component {
                                     menuVariant="dark"
                                 >
                                     <NavDropdown.Header>
-                                        <h4>{this.state.usuario}</h4>
+                                        {this.state.usuario}
                                     </NavDropdown.Header>
                                     <NavDropdown.Item href="#action/3.2">
                                         Perfil

@@ -1,3 +1,14 @@
+#navbar .dropdown-header {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
 #iconos{
     margin: 0 15%;
+}
+
+#imagen {
+    margin-right: 5%;
+    
 }

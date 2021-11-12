@@ -1,13 +1,15 @@
-import React from "react";
+import { Container } from "react-bootstrap";
 import "./App.css";
-import Login from "./Components/login/Login";
 import Menu from "./Components/page/Navbar";
+import AppRouter from "./Components/router/router";
 
 function App() {
     return (
         <div className="App">
-            <Menu />
-            <Login/>
+            <Container>
+                <Menu />
+                <AppRouter />
+            </Container>
         </div>
     );
 }

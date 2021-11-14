@@ -33,7 +33,9 @@ export default class Login extends React.Component {
                     cookies.set("_s", response.data.token, {
                         path: "/",
                         expires: calculaExpiracionSesion(),
+                        
                     });
+                    alert("Inicio de sesión correcto!!!");
                 }
                 this.setState({ loading: false });
             })

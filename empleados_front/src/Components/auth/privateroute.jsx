@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router";
 import { getSession } from "../helper/helper";
 
@@ -14,7 +14,6 @@ export default class PrivateRoute extends React.Component {
         };
     }
 
-    //WARNING! To be deprecated in React v17. Use componentDidMount instead.
     componentWillMount() {
         this.setState({
             auth: checkAuth() && !this.state.auth,

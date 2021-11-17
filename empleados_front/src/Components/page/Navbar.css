@@ -4,11 +4,12 @@
     justify-content: center;
 }
 
-#iconos{
-    margin: 0 15%;
+#menuUser,
+#carrito{
+    margin: 0 10%;
 }
 
-#imagen {
+#marcaImg {
     margin-right: 5%;
     
 }

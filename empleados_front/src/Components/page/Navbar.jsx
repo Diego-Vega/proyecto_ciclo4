@@ -24,7 +24,14 @@ export default class Menu extends React.Component {
     }
     render() {
         return (
-            <Navbar fixed="top" id="navbar" collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar
+                fixed="top"
+                id="navbar"
+                collapseOnSelect
+                expand="lg"
+                bg="dark"
+                variant="dark"
+            >
                 <Container>
                     <Navbar.Brand href="#home">
                         <Image
@@ -32,7 +39,7 @@ export default class Menu extends React.Component {
                             roundedCircle
                             height="48"
                             alt=""
-                            id="imagen"
+                            id="marcaImg"
                             loading="lazy"
                         />
                         My Shop Easy
@@ -55,14 +62,14 @@ export default class Menu extends React.Component {
                                 <Button variant="success">Buscar</Button>
                             </InputGroup>
                             <Nav className="me-auto">
-                                <Nav.Link href="#home" id="iconos">
+                                <Nav.Link href="#home" id="carrito">
                                     <span className="badge rounded-pill badge-notification bg-danger">
                                         {this.state.contador}
                                     </span>
                                     <FontAwesomeIcon icon={faShoppingCart} />
                                 </Nav.Link>
                                 <NavDropdown
-                                    id="iconos"
+                                    id="menuUser"
                                     title={
                                         <Image
                                             src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"

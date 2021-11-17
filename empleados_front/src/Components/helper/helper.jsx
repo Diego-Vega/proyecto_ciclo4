@@ -1,4 +1,5 @@
 import { isUndefined } from "util";
+import axios from "axios";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
@@ -9,6 +10,23 @@ export function calculaExpiracionSesion() {
     return new Date(newDate);
 }
 
-export function getSession(){
+export function getSession() {
     return isUndefined(cookies.get("_s")) ? false : cookies.get("_s");
 }
+
+function renovarSesion() {
+    const sesion = getSession();
+    if (!sesion) window.location.href = "/login";
+
+    cookies.set("_s", sesion, {
+        path: "/",
+        expires: calculaExpiracionSesion(),
+    });
+}
+
+export const request = {
+    get: function (url) {
+        renovarSesion();
+        return axios.get(url);
+    },
+};

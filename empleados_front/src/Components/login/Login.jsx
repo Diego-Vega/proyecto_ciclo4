@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { APIHOST as host } from "../app.json";
+import {APIHOST as host} from "../../App.json"
 import "./Login.css";
 import { isNull } from "util";
 import Cookies from "universal-cookie";
@@ -33,9 +33,9 @@ export default class Login extends React.Component {
                     cookies.set("_s", response.data.token, {
                         path: "/",
                         expires: calculaExpiracionSesion(),
-                        
                     });
                     alert("Inicio de sesión correcto!!!");
+                    this.props.history.push("/home");
                 }
                 this.setState({ loading: false });
             })

@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import React from "react";
 import "./App.css";
 import Menu from "./Components/page/Navbar";
 import AppRouter from "./Components/router/router";
@@ -6,10 +6,8 @@ import AppRouter from "./Components/router/router";
 function App() {
     return (
         <div className="App">
-            <Container>
-                <Menu />
-                <AppRouter />
-            </Container>
+            <Menu />
+            <AppRouter />
         </div>
     );
 }

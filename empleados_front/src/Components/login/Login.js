@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import {APIHOST as host} from "../../App.json"
+import { APIHOST as host } from "../../App.json";
 import "./Login.css";
 import { isNull } from "util";
 import Cookies from "universal-cookie";

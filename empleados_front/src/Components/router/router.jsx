@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "../login/Login";
-import {PrivateRoute} from "../auth/PrivateRoute"
+import PrivateRoute from "../auth/PrivateRoute";
 
 export default function AppRouter() {
     return (
@@ -25,5 +25,5 @@ export default function AppRouter() {
 }
 
 function Home() {
-    return <h2 style={{marginTop:200}}>HOME</h2>;
+    return <h2 style={{ marginTop: 200 }}>HOME</h2>;
 }

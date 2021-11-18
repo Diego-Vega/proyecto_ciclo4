@@ -2,13 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "../login/Login";
 import PrivateRoute from "../auth/PrivateRoute";
+import EmpleadosBuscar from "../empleados/empleados.buscar";
 
 export default function AppRouter() {
     return (
         <Router>
             <Switch>
                 <Route exact path={["/", "/login"]} component={Login} />
-                <PrivateRoute exact path={["/home"]} component={Home} />
+                <PrivateRoute exact path={["/empleados"]} component={EmpleadosBuscar} />
                 <Route
                     path={"*"}
                     component={() => (
@@ -22,8 +23,4 @@ export default function AppRouter() {
             </Switch>
         </Router>
     );
-}
-
-function Home() {
-    return <h2 style={{ marginTop: 200 }}>HOME</h2>;
 }

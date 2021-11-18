@@ -35,7 +35,7 @@ export default class Login extends React.Component {
                         expires: calculaExpiracionSesion(),
                     });
                     alert("Inicio de sesión correcto!!!");
-                    this.props.history.push("/home");
+                    this.props.history.push("/empleados");
                 }
                 this.setState({ loading: false });
             })

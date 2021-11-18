@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect } from "react-router";
+import { Route, Redirect } from "react-router-dom";
 import { getSession } from "../helper/helper";
 
 const checkAuth = () => {
@@ -25,7 +25,7 @@ export default class PrivateRoute extends React.Component {
         return (
             <Route
                 {...rest}
-                render={(props) => {
+                component={(props) => {
                     this.state.auth ? (
                         <Component {...props} />
                     ) : (

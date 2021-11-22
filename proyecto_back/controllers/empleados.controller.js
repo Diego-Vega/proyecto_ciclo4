@@ -67,7 +67,7 @@ exports.update = function (req, res) {
                 return;
             }
             response.exito = true;
-            response.msg = "El empleado se actualizo correctamente";
+            response.msg = "El empleado se actualizó correctamente";
             res.json(response);
         },
     );

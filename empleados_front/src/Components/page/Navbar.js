@@ -33,7 +33,7 @@ export default class Menu extends React.Component {
                 variant="dark"
             >
                 <Container>
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand href="/productos">
                         <Image
                             src="https://i.pinimg.com/736x/28/f1/a9/28f1a972e13e4281b5273891ead173eb.jpg"
                             roundedCircle
@@ -48,8 +48,8 @@ export default class Menu extends React.Component {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home">Inicio</Nav.Link>
-                            <Nav.Link href="#features">Productos</Nav.Link>
+                            <Nav.Link href="/inicio">Inicio</Nav.Link>
+                            <Nav.Link href="/productos">Productos</Nav.Link>
                             <Nav.Link href="#pricing">Acerda de</Nav.Link>
                         </Nav>
                         <Stack direction="horizontal">
@@ -92,6 +92,9 @@ export default class Menu extends React.Component {
                                         Cerrar Sesión
                                     </NavDropdown.Item>
                                 </NavDropdown>
+                                <Nav.Link href="/login" id="login">
+                                    <h6>Login</h6>
+                                </Nav.Link>
                             </Nav>
                         </Stack>
                     </Navbar.Collapse>

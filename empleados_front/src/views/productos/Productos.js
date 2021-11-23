@@ -1,9 +1,10 @@
 import React from "react";
 import { Image } from "react-bootstrap";
+import "./productos.css"
 
 const Productos = () => {
     return (
-        <div class="container">
+        <div class="container productos">
             <h1 class="my-5">Productos </h1>
             <div class="row">
                 <div class="col-md-3 col-sm-6">

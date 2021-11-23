@@ -5,11 +5,14 @@
 }
 
 #menuUser,
-#carrito{
+#carrito {
     margin: 0 10%;
 }
 
 #marcaImg {
     margin-right: 5%;
-    
+}
+#login {
+    margin-top: 10px;
+    margin-left: 10px;
 }

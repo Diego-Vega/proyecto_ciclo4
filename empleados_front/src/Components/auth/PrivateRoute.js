@@ -25,7 +25,7 @@ export default class PrivateRoute extends React.Component {
         return (
             <Route
                 {...rest}
-                component={(props) => {
+                render={(props) => 
                     this.state.auth ? (
                         <Component {...props} />
                     ) : (
@@ -35,8 +35,8 @@ export default class PrivateRoute extends React.Component {
                                 state: { from: this.props.location },
                             }}
                         />
-                    );
-                }}
+                    )
+                }
             />
         );
     }

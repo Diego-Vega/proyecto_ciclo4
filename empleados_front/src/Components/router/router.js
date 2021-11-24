@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "../login/Login";
 import PrivateRoute from "../auth/PrivateRoute";
-import EmpleadosBuscar from "../empleados/empleados.buscar";
+import ProductosCRUD from "../productosCRUD";
 import Inicio from "../../views/inicio/Inicio";
 import Productos from "../../views/productos/Productos";
 
@@ -15,8 +15,8 @@ export default function AppRouter() {
                 <Route exact path={["/login"]} component={Login} />
                 <PrivateRoute
                     exact
-                    path={["/empleados"]}
-                    component={EmpleadosBuscar}
+                    path={["/listaproductos"]}
+                    component={ProductosCRUD}
                 />
                 <Route
                     path={"*"}

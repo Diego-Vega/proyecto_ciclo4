@@ -6,7 +6,7 @@ var logger = require("morgan");
 var auth = require("./auth/main_auth");
 var cors = require("cors");
 
-var empleadosRouter = require("./routes/empleados.router");
+var productosRouter = require("./routes/productos.router");
 var usuarioRouter = require("./routes/usuario.router");
 
 var database = require("./config/database");
@@ -28,7 +28,7 @@ database.mongoConnect();
 
 app.use("/usuarios", usuarioRouter);
 app.use(auth);
-app.use("/empleados", empleadosRouter);
+app.use("/productos", productosRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

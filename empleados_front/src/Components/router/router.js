@@ -6,15 +6,17 @@ import ProductosCRUD from "../productosCRUD";
 import Productos from "../../views/productos/Productos";
 import ProductosDetails from "../../views/ProductosDetails/ProductsDetailsFront";
 import Casa from "../../views/Casa/CasaFront";
+import RegistroUsuario from "../../views/RegistroUsuario/RegistroUsuarioFront";
 
 export default function AppRouter() {
     return (
         <Router>
             <Switch>
-                <Route exact path={["/productos"]} component={Productos} />
-                <Route exact path={["/detalles"]} component={ProductosDetails}/>
+                <Route exact path={["/Productos"]} component={Productos} />
+                <Route exact path={["/Detalles"]} component={ProductosDetails}/>
                 <Route exact path={["/Home"]} component={Casa}/>
-                <Route exact path={["/login"]} component={Login} />
+                <Route exact path={["/Login"]} component={Login} />
+                <Route exact path={["/Registro"]} component={RegistroUsuario} />
                 <PrivateRoute
                     exact
                     path={["/listaproductos"]}

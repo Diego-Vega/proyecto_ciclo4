@@ -5,7 +5,7 @@ const Productos = () => {
     return (
         <div class="container">
             <h1 class="my-5">Productos </h1>
-            <div class="row">
+            <Row>
                 <div class="col-md-3 col-sm-6">
                     <div class="product-grid">
                         <div class="product-image">
@@ -219,7 +219,7 @@ const Productos = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Row>
         </div>
     );
 };

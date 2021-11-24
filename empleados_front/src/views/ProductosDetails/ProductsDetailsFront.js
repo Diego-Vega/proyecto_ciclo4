@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from "react-bootstrap";
+import { Badge } from "react-bootstrap";
 import "./ProductsDetailsStyle.css";
 
 const ProductosDetails = () => {
@@ -9,15 +11,7 @@ const ProductosDetails = () => {
           <b>G2 Silla</b>
         </font>
 
-        <span className="hint-star star">
-          <i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star-half-o" aria-hidden="true"></i>
-          <i className="fa fa-star-o" aria-hidden="true"></i>
-        </span>
-
-        <br></br>
+        
 
         <i className="information">
           "La poderosisima Silla de G2, los mejores se han sentado en esta silla
@@ -29,11 +23,11 @@ const ProductosDetails = () => {
 
         <div className="control">
           <div className="prueba">
-            <button className="btn" variant="success">
+            <Button className="btn" variant="success">{' '}
               <span className="price">Por solo 999 dolarucos</span>
 
-              <span className="buy">COMPRAR YA!!</span>
-            </button> 
+              <span  className="buy"> <Badge pill bg="dark"> COMPRAR YA!! </Badge> </span>
+            </Button> 
           </div>
         </div>
 

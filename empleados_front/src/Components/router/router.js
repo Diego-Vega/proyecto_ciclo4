@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "../login/Login";
 import PrivateRoute from "../auth/PrivateRoute";
 import ProductosCRUD from "../productosCRUD";
-import Inicio from "../../views/inicio/Inicio";
 import Productos from "../../views/productos/Productos";
 import ProductosDetails from "../../views/ProductosDetails/ProductsDetailsFront";
 import Casa from "../../views/Casa/CasaFront";
@@ -12,7 +11,6 @@ export default function AppRouter() {
     return (
         <Router>
             <Switch>
-                <Route exact path={["/", "/inicio"]} component={Inicio} />
                 <Route exact path={["/productos"]} component={Productos} />
                 <Route exact path={["/detalles"]} component={ProductosDetails}/>
                 <Route exact path={["/Home"]} component={Casa}/>

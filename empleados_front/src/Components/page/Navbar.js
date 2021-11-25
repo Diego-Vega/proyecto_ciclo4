@@ -49,7 +49,7 @@ export default class Menu extends React.Component {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/inicio">Inicio</Nav.Link>
-                            <Nav.Link href="/productos">Productos</Nav.Link>
+                            <Nav.Link href="/listaproductos">Listado</Nav.Link>
                             <Nav.Link href="#pricing">Acerda de</Nav.Link>
                         </Nav>
                         <Stack direction="horizontal">

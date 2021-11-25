@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Nav, Row } from "react-bootstrap";
 import ProductosBuscar from "./Buscar/productos.buscar";
 import ProductosCrear from "./Crear/productos.crear";
+import ProductosEditar from "./Editar/productos.editar";
 import "./productosCRUD.css";
 
 export default class ProductosCRUD extends React.Component {
@@ -9,10 +10,20 @@ export default class ProductosCRUD extends React.Component {
         super(props);
         this.state = {
             currentTab: "Buscar",
+            _id: null,
         };
+        this.changeTab = this.changeTab.bind(this);
+        this.setIdProducto = this.setIdProducto.bind(this);
+        this.getIdProducto = this.getIdProducto.bind(this);
     }
     changeTab(tab) {
         this.setState({ currentTab: tab });
+    }
+    setIdProducto(id) {
+        this.setState({ _id: id });
+    }
+    getIdProducto() {
+        return this.state._id;
     }
     render() {
         return (
@@ -36,10 +47,16 @@ export default class ProductosCRUD extends React.Component {
                 </Row>
                 <Row>
                     {this.state.currentTab === "Buscar" ? (
-                        <ProductosBuscar />
+                        <ProductosBuscar
+                            changeTab={this.changeTab}
+                            setIdProducto={this.setIdProducto}
+                        />
+                    ) : this.state.currentTab === "Crear" ? (
+                        <ProductosCrear changeTab={this.changeTab} />
                     ) : (
-                        <ProductosCrear
-                            changeTab={(tab) => this.changeTab(tab)}
+                        <ProductosEditar
+                            changeTab={this.changeTab}
+                            getIdProducto={this.getIdProducto}
                         />
                     )}
                 </Row>

@@ -2,24 +2,31 @@ import React from "react";
 import { Container, Form, Row, Button, Col } from "react-bootstrap";
 import Loading from "../../loading/Loading";
 import { request } from "../../helper/helper";
+import MessagePrompt from "../../prompts/message";
 
 export default class ProductosCrear extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            rediret: false,
+            message: {
+                text: "",
+                show: false,
+            },
             loading: false,
-            productos: {
+            producto: {
                 nombre: "",
-                precio: 0,
+                precio: "",
                 especificacion: "",
                 foto: "",
             },
         };
+        this.onExitedMessage = this.onExitedMessage.bind(this);
     }
     setValue(index, value) {
         this.setState({
-            productos: {
-                ...this.state.productos,
+            producto: {
+                ...this.state.producto,
                 [index]: value,
             },
         });
@@ -27,10 +34,16 @@ export default class ProductosCrear extends React.Component {
     guardarProducto() {
         this.setState({ loading: true });
         request
-            .post("/productos", this.state.productos)
+            .post("/productos", this.state.producto)
             .then((response) => {
                 if (response.data.exito) {
-                    this.props.changeTab("Buscar");
+                    this.setState({
+                        rediret: response.data.exito,
+                        message: {
+                            text: response.data.msg,
+                            show: true,
+                        },
+                    });
                 }
                 this.setState({ loading: false });
                 console.log(response.data);
@@ -40,9 +53,18 @@ export default class ProductosCrear extends React.Component {
                 this.setState({ loading: true });
             });
     }
+    onExitedMessage() {
+        if (this.state.rediret) this.props.changeTab("Buscar");
+    }
     render() {
         return (
             <Container id="productos-crear-container">
+                <MessagePrompt
+                    text={this.state.message.text}
+                    show={this.state.message.show}
+                    duration={2500}
+                    onExited={this.onExitedMessage}
+                />
                 <Loading show={this.state.loading} />
                 <Row>
                     <h2>Nuevo producto</h2>

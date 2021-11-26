@@ -2,6 +2,8 @@ import React from "react";
 import { Container, Form, Row, Button, Col } from "react-bootstrap";
 import Loading from "../../loading/Loading";
 import { request } from "../../helper/helper";
+import MessagePrompt from "../../prompts/message";
+import ConfirmationPrompts from "../../prompts/confirmation";
 
 export default class ProductosEditar extends React.Component {
     constructor(props) {
@@ -11,24 +13,37 @@ export default class ProductosEditar extends React.Component {
             rediret: false,
             message: {
                 text: "",
-                show: "",
+                show: false,
+            },
+            confirmation: {
+                title: "",
+                text: "",
+                show: false,
             },
             loading: false,
-            productos: {
+            producto: {
                 nombre: "",
-                precio: 0,
+                precio: "",
                 especificacion: "",
                 foto: "",
             },
         };
+        this.onExitedMessage = this.onExitedMessage.bind(this);
+        this.onCancel = this.onCancel.bind(this);
+        this.onConfirm = this.onConfirm.bind(this);
     }
-    getproducto() {
+    componentDidMount() {
+        this.getProducto();
+    }
+    getProducto() {
         this.setState({ loadig: true });
         request
             .get(`/productos/${this.state.idProducto}`)
             .then((response) => {
-                console.log(response);
-                this.setState({ loading: true });
+                this.setState({
+                    producto: response.data,
+                    loading: false,
+                });
             })
             .catch((err) => {
                 console.error(err);
@@ -37,8 +52,8 @@ export default class ProductosEditar extends React.Component {
     }
     setValue(index, value) {
         this.setState({
-            productos: {
-                ...this.state.productos,
+            producto: {
+                ...this.state.producto,
                 [index]: value,
             },
         });
@@ -46,7 +61,7 @@ export default class ProductosEditar extends React.Component {
     guardarProducto() {
         this.setState({ loading: true });
         request
-            .post("/productos", this.state.productos)
+            .put(`/productos/${this.state.idProducto}`, this.state.producto)
             .then((response) => {
                 if (response.data.exito) {
                     this.props.changeTab("Buscar");
@@ -59,9 +74,40 @@ export default class ProductosEditar extends React.Component {
                 this.setState({ loading: true });
             });
     }
+    onExitedMessage() {
+        if (this.state.rediret) this.props.changeTab("Buscar");
+    }
+    onCancel() {
+        alert("cancelar");
+        
+    }
+    onConfirm() {
+        this.setState(
+            {
+                confirmation: {
+                    ...this.state.confirmation,
+                    show: true,
+                },
+            },
+            this.guardarProducto(),
+        );
+    }
     render() {
         return (
             <Container id="productos-crear-container">
+                <MessagePrompt
+                    text={this.state.message.text}
+                    show={this.state.message.show}
+                    duration={2500}
+                    onExited={this.onExitedMessage}
+                />
+                <ConfirmationPrompts
+                    text={this.state.confirmation.text}
+                    show={this.state.confirmation.show}
+                    title={this.state.confirmation.title}
+                    onCancel={this.onCancel}
+                    onConfirm={this.onConfirm}
+                />
                 <Loading show={this.state.loading} />
                 <Row>
                     <h2>Editar producto</h2>
@@ -82,6 +128,7 @@ export default class ProductosEditar extends React.Component {
                                 >
                                     <Form.Label>Producto</Form.Label>
                                     <Form.Control
+                                        value={this.state.producto.nombre}
                                         onChange={(e) =>
                                             this.setValue(
                                                 "nombre",
@@ -97,6 +144,7 @@ export default class ProductosEditar extends React.Component {
                                 >
                                     <Form.Label>Precio</Form.Label>
                                     <Form.Control
+                                        value={this.state.producto.precio}
                                         onChange={(e) =>
                                             this.setValue(
                                                 "precio",
@@ -120,6 +168,9 @@ export default class ProductosEditar extends React.Component {
                                 >
                                     <Form.Label>Especificación</Form.Label>
                                     <Form.Control
+                                        value={
+                                            this.state.producto.especificacion
+                                        }
                                         onChange={(e) =>
                                             this.setValue(
                                                 "especificacion",
@@ -135,6 +186,7 @@ export default class ProductosEditar extends React.Component {
                                 >
                                     <Form.Label>Foto</Form.Label>
                                     <Form.Control
+                                        value={this.state.producto.foto}
                                         onChange={(e) =>
                                             this.setValue(
                                                 "foto",
@@ -148,9 +200,16 @@ export default class ProductosEditar extends React.Component {
                         </Row>
                         <Button
                             variant="primary"
-                            onClick={() => console.log(this.guardarProducto())}
+                            onClick={() =>
+                                this.setState({
+                                    confirmation: {
+                                        ...this.state.confirmation,
+                                        show: true,
+                                    },
+                                })
+                            }
                         >
-                            Guardar
+                            Guardar cambios
                         </Button>
                     </Form>
                 </Row>

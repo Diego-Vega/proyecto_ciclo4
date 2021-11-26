@@ -37,7 +37,7 @@ exports.find = function (req, res) {
 
 //Para mostrar un producto
 exports.findOne = function (req, res) {
-    Producto.find({ _id: req.params.id }, function (err, productos) {
+    Producto.findOne({ _id: req.params.id }, function (err, productos) {
         res.json(productos);
     });
 };

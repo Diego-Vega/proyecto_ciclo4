@@ -34,7 +34,7 @@ export default class ProductosBuscar extends React.Component {
     }
     onClickEditButton(row) {
         this.props.setIdProducto(row._id);
-        this.props.changeTab('Editar');
+        this.props.changeTab("Editar");
     }
     render() {
         return (

@@ -7,11 +7,13 @@ import Productos from "../../views/productos/Productos";
 import ProductosDetails from "../../views/ProductosDetails/ProductsDetailsFront";
 import Casa from "../../views/Casa/CasaFront";
 import RegistroUsuario from "../../views/RegistroUsuario/RegistroUsuarioFront";
+import Carrito from "../../views/Carrito/CarritoFront";
 
 export default function AppRouter() {
     return (
         <Router>
             <Switch>
+                <Route exact path={["/Carrito"]} component={Carrito} />
                 <Route exact path={["/Productos"]} component={Productos} />
                 <Route exact path={["/Detalles"]} component={ProductosDetails}/>
                 <Route exact path={["/Home"]} component={Casa}/>

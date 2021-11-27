@@ -1,5 +1,5 @@
-import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React from "react";
+import { Modal, Button } from "react-bootstrap";
 
 export default class ConfirmationPrompts extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ export default class ConfirmationPrompts extends React.Component {
         };
     }
 
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.show) this.setState({ show: true });
     }
 

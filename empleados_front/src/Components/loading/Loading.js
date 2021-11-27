@@ -8,7 +8,7 @@ export default class Loading extends React.Component {
         this.state = {};
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
+    componentDidUpdate(nextProps) {
         if (nextProps.show !== this.state.show) {
             this.setState({ show: nextProps.show });
         }

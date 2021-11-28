@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Container,
     Form,
@@ -9,18 +9,59 @@ import {
     Nav,
     NavDropdown,
     Image,
+    Modal,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 
+function Prueba() {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    return (
+        <>
+            <Nav.Link onClick={handleShow} id="mss">
+                Acerca de{" "}
+            </Nav.Link>
+            <Modal centered onHide={handleClose} show={show}>
+                <Modal.Body>
+                    <h4>Proyecto realizado por:</h4>
+                    <p>
+                        Diego Fernando Vega Muñoz
+                        <br />
+                        Jorge Eliecer Rojas Quiñones
+                        <br />
+                        Gustavo Adolfo Ramirez Aponte
+                        <br />
+                        Javier Felipe Florez
+                        <br />
+                        Julian David Garzon Caballero
+                    </p>
+                    <Button
+                        variant="primary"
+                        id="btncerrar"
+                        onClick={handleClose}
+                    >
+                        Cerrar
+                    </Button>
+                </Modal.Body>
+            </Modal>
+        </>
+    );
+}
 export default class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             usuario: "Usuario",
             contador: "0",
+            show: false,
         };
+    }
+    cerrarSesion() {
+        document.cookie = "_s=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.reload();
     }
     render() {
         return (
@@ -33,9 +74,9 @@ export default class Menu extends React.Component {
                 variant="dark"
             >
                 <Container>
-                    <Navbar.Brand href="/productos">
+                    <Navbar.Brand href="/inicio">
                         <Image
-                            src="https://i.pinimg.com/736x/28/f1/a9/28f1a972e13e4281b5273891ead173eb.jpg"
+                            src="https://myeasyshop.herokuapp.com/img/tienda_neg.0b231a3e.png"
                             roundedCircle
                             height="48"
                             alt=""
@@ -48,9 +89,23 @@ export default class Menu extends React.Component {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/inicio">Inicio</Nav.Link>
-                            <Nav.Link href="/listaproductos">Listado</Nav.Link>
-                            <Nav.Link href="#pricing">Acerda de</Nav.Link>
+                            <Nav.Link className="pt-3" href="/productos">
+                                Productos
+                            </Nav.Link>
+                            <Nav.Link
+                                style={
+                                    document.cookie === ""
+                                        ? { display: "none" }
+                                        : {}
+                                }
+                                className="pt-3"
+                                href="/listaproductos"
+                            >
+                                Listado
+                            </Nav.Link>
+                            <Nav.Link>
+                                <Prueba />
+                            </Nav.Link>
                         </Nav>
                         <Stack direction="horizontal">
                             <InputGroup>
@@ -69,10 +124,15 @@ export default class Menu extends React.Component {
                                     <FontAwesomeIcon icon={faShoppingCart} />
                                 </Nav.Link>
                                 <NavDropdown
+                                    style={
+                                        document.cookie === ""
+                                            ? { display: "none" }
+                                            : {}
+                                    }
                                     id="menuUser"
                                     title={
                                         <Image
-                                            src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
+                                            src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-vert.png"
                                             roundedCircle
                                             height="48"
                                             alt=""
@@ -88,11 +148,23 @@ export default class Menu extends React.Component {
                                         Perfil
                                     </NavDropdown.Item>
                                     <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action/3.4">
+                                    <NavDropdown.Item
+                                        onClick={() => {
+                                            this.cerrarSesion();
+                                        }}
+                                    >
                                         Cerrar Sesión
                                     </NavDropdown.Item>
                                 </NavDropdown>
-                                <Nav.Link href="/login" id="login">
+                                <Nav.Link
+                                    style={
+                                        document.cookie !== ""
+                                            ? { display: "none" }
+                                            : {}
+                                    }
+                                    href="/login"
+                                    id="login"
+                                >
                                     <h6>Login</h6>
                                 </Nav.Link>
                             </Nav>

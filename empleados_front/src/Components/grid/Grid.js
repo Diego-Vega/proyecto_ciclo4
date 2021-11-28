@@ -39,6 +39,7 @@ export default class DataGrid extends React.Component {
                     rows: response.data,
                     Loading: false,
                 });
+                console.log(response.data);
             })
             .catch((err) => {
                 this.setState({ loading: false });

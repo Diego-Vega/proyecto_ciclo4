@@ -38,6 +38,7 @@ export default class Login extends React.Component {
                     this.props.history.push("/listaproductos");
                 }
                 this.setState({ loading: false });
+                window.location.reload();
             })
             .catch((err) => {
                 console.log(err);

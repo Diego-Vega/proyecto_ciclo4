@@ -1,3 +1,19 @@
-.productos{
+.productos {
     margin-top: 100px;
+}
+
+#imagen {
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 200px;
+    overflow:hidden;
+}
+
+#imagen img {
+    
+}
+
+#imagen img:hover {
+    
 }

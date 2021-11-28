@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import Menu from "./Components/page/Navbar";
 import AppRouter from "./Components/router/router";

@@ -21,10 +21,10 @@ const columns = [
         dataField: "especificacion",
         text: "Especificacion",
     },
-    {
-        dataField: "foto",
-        text: "Foto",
-    },
+    // {
+    //     dataField: "foto",
+    //     text: "Foto",
+    // },
 ];
 export default class ProductosBuscar extends React.Component {
     constructor(props) {

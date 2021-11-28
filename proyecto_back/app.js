@@ -27,7 +27,7 @@ database.mongoConnect();
 //Routers
 
 app.use("/usuarios", usuarioRouter);
-app.use(auth);
+// app.use(auth);
 app.use("/productos", productosRouter);
 
 // catch 404 and forward to error handler

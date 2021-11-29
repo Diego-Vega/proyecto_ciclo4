@@ -117,7 +117,7 @@ export default class Menu extends React.Component {
                                 <Button variant="success">Buscar</Button>
                             </InputGroup>
                             <Nav className="me-auto">
-                                <Nav.Link href="#home" id="carrito">
+                                <Nav.Link href="/carrito" id="carrito">
                                     <span className="badge rounded-pill badge-notification bg-danger">
                                         {this.state.contador}
                                     </span>
@@ -144,7 +144,7 @@ export default class Menu extends React.Component {
                                     <NavDropdown.Header>
                                         {this.state.usuario}
                                     </NavDropdown.Header>
-                                    <NavDropdown.Item href="#action/3.2">
+                                    <NavDropdown.Item href="/perfil">
                                         Perfil
                                     </NavDropdown.Item>
                                     <NavDropdown.Divider />

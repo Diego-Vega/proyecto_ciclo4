@@ -53,7 +53,7 @@ export default class Productos extends React.Component {
                                 <Col>
                                     <Card>
                                         <Card.Link
-                                        href="">
+                                        href="/detalles">
                                             <div id="imagen">
                                                 <Card.Img
                                                     variant="top"

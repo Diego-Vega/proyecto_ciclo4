@@ -12,12 +12,12 @@ export default class ProductosEditar extends React.Component {
             idProducto: this.props.getIdProducto(),
             rediret: false,
             message: {
-                text: "",
+                text: "El producto se modificó correctamente",
                 show: false,
             },
             confirmation: {
-                title: "",
-                text: "",
+                title: "Modificar Producto",
+                text: "¿Desea guardar los cambios?",
                 show: false,
             },
             loading: false,
@@ -64,7 +64,14 @@ export default class ProductosEditar extends React.Component {
             .put(`/productos/${this.state.idProducto}`, this.state.producto)
             .then((response) => {
                 if (response.data.exito) {
-                    this.props.changeTab("Buscar");
+                    this.setState({
+                        rediret: response.data.exito,
+                        message: {
+                            text: response.data.msg,
+                            show: true,
+                        },
+                    });
+                    // this.props.changeTab("Buscar");
                 }
                 this.setState({ loading: false });
                 console.log(response.data);
@@ -78,15 +85,19 @@ export default class ProductosEditar extends React.Component {
         if (this.state.rediret) this.props.changeTab("Buscar");
     }
     onCancel() {
-        alert("cancelar");
-        
+        this.setState({
+            confirmation: {
+                ...this.state.confirmation,
+                show: false,
+            },
+        });
     }
     onConfirm() {
         this.setState(
             {
                 confirmation: {
                     ...this.state.confirmation,
-                    show: true,
+                    show: false,
                 },
             },
             this.guardarProducto(),

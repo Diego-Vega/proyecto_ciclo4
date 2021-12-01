@@ -23,7 +23,7 @@
     margin-bottom: 10px;
 }
 
-label {
+.totals-item label {
     float: left;
     width: 70%;
 }
@@ -42,3 +42,14 @@ label {
 .checkout:hover {
     background-color: #494;
 }
+
+#imagenCarrito {
+    height: 150px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* #detallesCarrito br{
+    padding-top: 1px;
+} */

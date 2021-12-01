@@ -25,8 +25,9 @@ export default class MessagePrompt extends React.Component {
     render() {
         return (
             <Modal
+                className={`pt-5 mt-5`} 
                 id="message-prompt"
-                centered
+                // centered
                 show={this.state.show}
                 onExited={() => this.onExited()}
             >

@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Col, Container, Row, Button } from "react-bootstrap";
 import "./productos.css";
-// import { request } from "../../Components/helper/helper";
 import axios from "axios";
 import { APIHOST as host } from "../../App.json";
 
@@ -13,23 +12,6 @@ export default class Productos extends React.Component {
             data: [],
         };
     }
-    // componentDidMount() {
-    //     this.getData();
-    // }
-    // getData() {
-    //     request
-    //         .get("/productos")
-    //         .then((response) => {
-    //             this.setState({
-    //                 rows: response.data.length,
-    //                 data: response.data,
-    //             });
-    //             console.log(response.data);
-    //         })
-    //         .catch((err) => {
-    //             console.error(err);
-    //         });
-    // }
     getData() {
         axios.get(`${host}/productos`).then((response) => {
             this.setState({
@@ -42,6 +24,39 @@ export default class Productos extends React.Component {
     componentDidMount() {
         this.getData();
     }
+    añadirAlCarrito(producto) {
+        if (!localStorage.getItem("carritoCompra")) {
+            localStorage.setItem("carritoCompra", JSON.stringify([]));
+        }
+        var carritoStorage = JSON.parse(localStorage.getItem("carritoCompra"));
+        var productoCarrito = {
+            id: producto._id,
+            nombre: producto.nombre,
+            precio: producto.precio,
+            foto: producto.foto,
+            especificacion: producto.especificacion,
+        };
+        if (productoCarrito == undefined) {
+            console.log("Error al agregar el producto al carrito");
+        }
+        if (carritoStorage == null) {
+            carritoStorage = [];
+        }
+        if (Object.keys(carritoStorage).length === 0) {
+            carritoStorage.push(productoCarrito);
+        } else if (Object.keys(carritoStorage).length !== 0) {
+            var validator = true;
+            Object.keys(carritoStorage).forEach((key) => {
+                if (carritoStorage[key].id === producto._id) {
+                    validator = false;
+                }
+            });
+            if (validator === true) {
+                carritoStorage.push(productoCarrito);
+            }
+        }
+        localStorage.setItem("carritoCompra", JSON.stringify(carritoStorage));
+    }
     render() {
         return (
             <Container className="productos">
@@ -52,15 +67,19 @@ export default class Productos extends React.Component {
                             {this.state.data.map((producto) => (
                                 <Col>
                                     <Card>
-                                        <Card.Link
-                                        href="/detalles">
-                                            <div id="imagen">
-                                                <Card.Img
-                                                    variant="top"
-                                                    src={producto.foto}
-                                                />
+                                        <div id="imagen">
+                                            <Card.Img
+                                                variant="top"
+                                                src={producto.foto}
+                                            />
+                                            <div id="precio">
+                                                <h3>Precio</h3>
+                                                <span>$ {producto.precio}</span>
                                             </div>
-                                        </Card.Link>
+                                        </div>
+                                        {/* <Card.Link
+                                        href="/detalles">
+                                        </Card.Link> */}
                                         <Card.Body>
                                             <Card.Title
                                                 style={{ fontSize: "30px" }}
@@ -71,7 +90,15 @@ export default class Productos extends React.Component {
                                                 {producto.especificacion}
                                             </Card.Text>
                                             <Card.Text>
-                                                <Button variant="success">
+                                                <Button
+                                                    onClick={() =>
+                                                        this.añadirAlCarrito(
+                                                            producto,
+                                                        )
+                                                    }
+                                                    href="/carrito"
+                                                    variant="success"
+                                                >
                                                     Comprar
                                                 </Button>
                                             </Card.Text>

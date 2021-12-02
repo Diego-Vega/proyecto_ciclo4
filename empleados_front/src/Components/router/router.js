@@ -16,7 +16,7 @@ export default function AppRouter() {
                 <Route exact path={["/", "/inicio"]} component={Inicio} />
                 <Route exact path={["/productos"]} component={Productos} />
                 <Route exact path={["/login"]} component={Login} />
-                <Route exact path={["/perfil"]} component={PerfilUsuario} />
+                <PrivateRoute exact path={["/perfil"]} component={PerfilUsuario} />
                 <Route exact path={["/carrito"]} component={Carrito} />
                 <Route
                     exact

@@ -36,7 +36,7 @@ export default class Productos extends React.Component {
             foto: producto.foto,
             especificacion: producto.especificacion,
         };
-        if (productoCarrito == undefined) {
+        if (productoCarrito === undefined) {
             console.log("Error al agregar el producto al carrito");
         }
         if (carritoStorage == null) {

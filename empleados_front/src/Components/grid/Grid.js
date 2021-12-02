@@ -113,6 +113,7 @@ export default class DataGrid extends React.Component {
                                             </Col>
                                             <Col>
                                                 <SearchBar
+                                                    placeholder="Busqueda"
                                                     {...props.searchProps}
                                                 />
                                             </Col>

@@ -12,7 +12,7 @@ export default class ProductosEditar extends React.Component {
             idProducto: this.props.getIdProducto(),
             rediret: false,
             message: {
-                text: "El producto se modificó correctamente",
+                text: "",
                 show: false,
             },
             confirmation: {

@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
-const host = "localhost";
-const port = "27017";
-const db = "hr";
+// const host = "localhost";
+// const port = "27017";
+// const db = "hr";
 
 exports.mongoConnect = () => {
-    const mongoStringConnection = `mongodb://${host}:${port}/${db}`;
+    const mongoStringConnection = `mongodb+srv://Diego_Vega:Mintic2022g48@cluster0.xdve0.mongodb.net/Mitienda2?retryWrites=true&w=majority`;
+    // const mongoStringConnection = `mongodb://${host}:${port}/${db}`;
 
     mongoose
         .connect(mongoStringConnection)

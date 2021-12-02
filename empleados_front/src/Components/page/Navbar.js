@@ -14,6 +14,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
+import Cookies from "universal-cookie";
 
 function Prueba() {
     const [show, setShow] = useState(false);
@@ -50,18 +51,28 @@ function Prueba() {
         </>
     );
 }
+
+const cookies = new Cookies();
 export default class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            usuario: "Usuario",
-            contador: "0",
+            usuario: "Admin",
+            contador: this.contador(),
             show: false,
         };
     }
-    cerrarSesion() {
-        document.cookie = "_s=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // cerrarSesion() {
+    //     document.cookie = "_s=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    //     window.location.reload();
+    // }
+    logout() {
+        cookies.remove("_s");
         window.location.reload();
+    }
+    contador() {
+        var carritoStorage = JSON.parse(localStorage.getItem("carritoCompra"));
+        return Object.keys(carritoStorage).length;
     }
     render() {
         return (
@@ -150,7 +161,8 @@ export default class Menu extends React.Component {
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item
                                         onClick={() => {
-                                            this.cerrarSesion();
+                                            // this.cerrarSesion();
+                                            this.logout();
                                         }}
                                     >
                                         Cerrar Sesión

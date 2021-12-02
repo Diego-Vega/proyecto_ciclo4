@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 export default class PerfilUsuario extends React.Component {
     render() {
         return (
-            <Container style={{ marginTop: 100 }}>
+            <Container style={{ marginTop: 100, marginBottom: 150 }}>
                 <div class="container mt-3">
                     <div class="main-body">
                         <div class="row gutters-sm">

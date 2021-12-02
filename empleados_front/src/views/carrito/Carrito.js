@@ -9,18 +9,26 @@ import {
     Container,
     Image,
 } from "react-bootstrap";
-import CloseButton from "react-bootstrap/CloseButton";
+import MessagePrompt from "../../Components/prompts/message";
+// import CloseButton from "react-bootstrap/CloseButton";
 import "./carrito.css";
 
 export default class Carrito extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            rediret: false,
             carritoStorage: JSON.parse(localStorage.getItem("carritoCompra")),
+            inc: 0.05,
+            message: {
+                text: "",
+                show: true,
+            },
         };
+        this.onExitedMessage = this.onExitedMessage.bind(this);
     }
     eliminarItem(id) {
-        if (id == undefined) {
+        if (id === undefined) {
             console.error();
         }
         var carrito = localStorage.getItem("carritoCompra");
@@ -28,13 +36,54 @@ export default class Carrito extends React.Component {
         arr = arr.filter((item) => item.id !== id);
         localStorage.setItem("carritoCompra", JSON.stringify(arr));
         this.setState.carritoStorage = this.state.carritoStorage.filter(
-            (item) => item.id != id,
+            (item) => item.id !== id,
         );
         window.location.reload();
+    }
+    subTotal() {
+        let sum = 0;
+        this.state.carritoStorage.map(
+            (producto) => (sum += parseFloat(producto.precio)),
+        );
+        return sum;
+    }
+    envio() {
+        return this.subTotal() * this.state.inc;
+    }
+    totalFinal() {
+        return this.subTotal() + this.envio();
+    }
+    onExitedMessage() {
+        if (this.state.rediret) this.props.history.push("/productos");
+    }
+    comprar() {
+        if (this.state.carritoStorage == "") {
+            this.setState({
+                rediret: false,
+                message: {
+                    text: "No hay productos en el carrito",
+                    show: true,
+                },
+            });
+        } else {
+            this.setState({
+                rediret: true,
+                message: {
+                    text: "Su pedido se ha realizado con exito!!",
+                    show: true,
+                },
+            });
+        }
     }
     render() {
         return (
             <Container className="tam">
+                <MessagePrompt
+                    text={this.state.message.text}
+                    show={this.state.message.show}
+                    duration={2500}
+                    onExited={this.onExitedMessage}
+                />
                 <Row>
                     <Col>
                         <Card>
@@ -59,7 +108,10 @@ export default class Carrito extends React.Component {
                                                             {producto.nombre}
                                                             <br />
                                                             Precio Unitario:{" "}
-                                                            {producto.precio}
+                                                            {
+                                                                producto.precio
+                                                            }{" "}
+                                                            COL
                                                             <br />
                                                             Detalles:{" "}
                                                             {
@@ -153,7 +205,7 @@ export default class Carrito extends React.Component {
                                             className="totals-value"
                                             id="cart-subtotal"
                                         >
-                                            $499 USD
+                                            $ {this.subTotal()} COL
                                         </div>
                                     </div>
                                     <div className="totals-item">
@@ -162,7 +214,7 @@ export default class Carrito extends React.Component {
                                             className="totals-value"
                                             id="cart-shipping"
                                         >
-                                            $50 USD
+                                            $ {this.envio()} COL
                                         </div>
                                     </div>
                                     <hr></hr>
@@ -172,12 +224,13 @@ export default class Carrito extends React.Component {
                                             className="totals-value"
                                             id="cart-total"
                                         >
-                                            $549 USD
+                                            $ {this.totalFinal()} COL
                                         </div>
                                     </div>
                                     <div className="text-center">
                                         <Button
-                                            href="/login"
+                                            onClick={() => this.comprar()}
+                                            // href="/login"
                                             variant="success"
                                             className="checkout"
                                         >

@@ -21,6 +21,7 @@ exports.login = function (req, res, next) {
                         usuario: usuario.usuario,
                     },
                     "__recret__",
+                    { expiresIn: "12h" },
                 );
             }
             res.json(response);

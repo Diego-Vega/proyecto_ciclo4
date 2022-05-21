@@ -29,15 +29,11 @@ function Prueba() {
                 <Modal.Body>
                     <h4>Proyecto realizado por:</h4>
                     <p>
-                        Diego Fernando Vega Muñoz
-                        <br />
-                        Jorge Eliecer Rojas Quiñones
-                        <br />
                         Gustavo Adolfo Ramirez Aponte
                         <br />
-                        Javier Felipe Florez
+                        Wilson David Gomez Gomez
                         <br />
-                        Julian David Garzon Caballero
+                        Dylan Antonio Yampuezan Motato
                     </p>
                     <Button
                         variant="primary"

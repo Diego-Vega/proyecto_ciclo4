@@ -2,12 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "../login/Login";
 import PrivateRoute from "../auth/PrivateRoute";
-import ProductosCRUD from "../productosCRUD";
 import Inicio from "../../views/inicio/Inicio";
 import Productos from "../../views/productos/Productos";
-import PerfilUsuario from "../../views/perfil/perfilUsuario";
-import ProductosDetails from "../../views/productsdetails/ProductsDetails";
-import Carrito from "../../views/carrito/Carrito";
+
 
 export default function AppRouter() {
     return (
@@ -16,18 +13,9 @@ export default function AppRouter() {
                 <Route exact path={["/", "/inicio"]} component={Inicio} />
                 <Route exact path={["/productos"]} component={Productos} />
                 <Route exact path={["/login"]} component={Login} />
-                <PrivateRoute exact path={["/perfil"]} component={PerfilUsuario} />
-                <Route exact path={["/carrito"]} component={Carrito} />
-                <Route
-                    exact
-                    path={["/detalles"]}
-                    component={ProductosDetails}
-                />
-                <PrivateRoute
-                    exact
-                    path={["/listaproductos"]}
-                    component={ProductosCRUD}
-                />
+                
+               
+                
                 <Route
                     path={"*"}
                     component={() => (

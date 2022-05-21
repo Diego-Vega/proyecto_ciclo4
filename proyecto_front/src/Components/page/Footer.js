@@ -14,11 +14,11 @@ export default class Footer extends React.Component {
                     <a
                         target="_blank"
                         rel="noreferrer"
-                        href="https://github.com/Diego-Vega/proyecto_ciclo4"
+                        
                     >
-                        Grupo G-03
+                        Grupo G-06
                     </a>{" "}
-                    de Mintic 2022-G35.
+                    de Univalle.
                 </p>
             </div>
         );
